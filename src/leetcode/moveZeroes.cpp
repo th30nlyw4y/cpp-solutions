@@ -8,10 +8,8 @@
 using namespace std;
 
 void moveZeroes(vector<int> &nums) {
-    for (int i = 0, nonZeroIndex = 0; i < nums.size(); i++) {
-        if (nums[i] != 0) {
-            swap(nums[nonZeroIndex], nums[i]);
-            nonZeroIndex++;
-        }
+    int lastNonZero = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i]) swap(nums[lastNonZero++], nums[i]);
     }
 }
