@@ -8,14 +8,9 @@
 using namespace std;
 
 int removeElement(vector<int> &nums, int val) {
-    int valCnt = 0, ans = 0;
-    for (int i = 0; i < nums.size(); i++) {
-        if (nums[i] == val) {
-            valCnt++;
-        } else {
-            nums[i - valCnt] = nums[i];
-            ans++;
-        }
+    int lastInserted = 0;
+    for (int num: nums) {
+        if (num != val) nums[lastInserted++] = num;
     }
-    return ans;
+    return lastInserted;
 }
