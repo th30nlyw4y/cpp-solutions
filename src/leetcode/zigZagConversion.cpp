@@ -10,19 +10,15 @@ using namespace std;
 string convert(string s, int numRows) {
     string ans;
     if (numRows < 2) return s;
-    int lBase = 2 * (numRows - 1);
+    int baseShift = 2 * (numRows - 1);
     for (int row = 0; row < numRows; row++) {
-        int lTmp = 2 * (numRows - row - 1);
-        for (int i = row; i < s.size(); i += lBase) {
+        int intermediateShift = 2 * (numRows - row - 1);
+        for (int i = row; i < s.size(); i += baseShift) {
             ans += s[i];
-            if (lTmp < lBase && lTmp > 0 && i + lTmp < s.size()) {
-                ans += s[i + lTmp];
+            if (intermediateShift < baseShift && intermediateShift > 0 && i + intermediateShift < s.size()) {
+                ans += s[i + intermediateShift];
             }
         }
     }
     return ans;
-}
-
-int main() {
-    cout << convert("A", 1);
 }
